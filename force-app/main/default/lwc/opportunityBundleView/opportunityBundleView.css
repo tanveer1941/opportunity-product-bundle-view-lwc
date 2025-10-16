@@ -1,0 +1,150 @@
+:host {
+    display: block;
+}
+
+.container {
+    background-color: white;
+    padding: 1rem;
+}
+
+.heading {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: #003366;
+    font-weight: bold;
+}
+
+.section {
+    margin-bottom: 1rem;
+    border: 1px solid #d9d9d9;
+    border-radius: 0.25rem;
+}
+
+.section-title {
+    padding: 0.5rem 0.75rem;
+    font-weight: 700;
+    border-bottom: 1px solid #d9d9d9;
+    background: #f3f3f3;
+}
+
+.bundle {
+    border-bottom: 1px solid #eee;
+}
+
+.bundle:last-child {
+    border-bottom: 0;
+}
+
+.bundle-header {
+    display: grid;
+    grid-template-columns: 18px 1fr auto auto auto 16px;
+    gap: 0.5rem;
+    align-items: center;
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+}
+
+.bundle-header .name {
+    font-weight: 600;
+}
+
+.bundle-header .meta {
+    color: #5e5e5e;
+    font-size: 0.75rem;
+}
+
+.bundle-header .price {
+    justify-self: end;
+    font-weight: 600;
+}
+
+.bundle-body {
+    padding: 0.5rem 0.75rem 0.75rem 2rem;
+}
+
+.bundle .bundle-body {
+    display: none;
+}
+
+.bundle.expanded .bundle-body {
+    display: block;
+}
+
+.children {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.child {
+    display: grid;
+    grid-template-columns: 12px 1fr auto auto auto;
+    gap: 0.5rem;
+    align-items: center;
+    padding: 0.25rem 0;
+}
+
+.child .name {
+    font-weight: 500;
+}
+
+.standalone {
+    list-style: none;
+    margin: 0;
+    padding: 0.25rem 0.75rem 0.75rem;
+}
+
+.standalone .row {
+    display: grid;
+    grid-template-columns: 18px 1fr auto auto auto;
+    gap: 0.5rem;
+    align-items: center;
+    padding: 0.25rem 0;
+    border-bottom: 1px dashed #eee;
+}
+
+.standalone .row:last-child {
+    border-bottom: 0;
+}
+
+.price {
+    justify-self: end;
+}
+
+.error {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #ba0517;
+    padding: 0.5rem;
+    border: 1px solid #ba0517;
+    border-radius: 0.25rem;
+    background: #fff5f7;
+    margin-bottom: 0.5rem;
+}
+
+.empty, .empty-children {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #5e5e5e;
+    padding: 0.75rem;
+}
+
+.skeleton .line {
+    height: 10px;
+    background: linear-gradient(90deg, #f2f2f2, #e6e6e6, #f2f2f2);
+    background-size: 200% 100%;
+    animation: shimmer 1.6s infinite;
+    margin: 0.4rem 0;
+    border-radius: 4px;
+}
+
+.skeleton .line.short {
+    width: 60%;
+}
+
+@keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}

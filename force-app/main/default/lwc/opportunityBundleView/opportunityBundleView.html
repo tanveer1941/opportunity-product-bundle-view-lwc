@@ -1,0 +1,83 @@
+<template>
+    <div class="container">
+        <h2 class="heading">Product Overview</h2>
+        
+        <template if:true={loading}>
+            <div class="skeleton">
+                <div class="line"></div>
+                <div class="line short"></div>
+            </div>
+        </template>
+
+        <template if:true={error}>
+            <div class="error">
+                <lightning-icon icon-name="utility:error" size="small" alternative-text="Error"></lightning-icon>
+                <span class="msg">{error}</span>
+            </div>
+        </template>
+
+        <template if:true={hasData}>
+            <!-- Bundles -->
+            <template if:true={bundles.length}>
+                <div class="section">
+                    <div class="section-title">Bundles</div>
+                    <template for:each={bundles} for:item="b">
+                        <section key={b.id} class="bundle" data-id={b.id}>
+                            <header class="bundle-header" data-id={b.id} onclick={handleToggle}>
+                                <lightning-icon icon-name="utility:bundle_policy" size="x-small"></lightning-icon>
+                                <span class="name" title={b.productName}>{b.productName}</span>
+                                <span class="meta">Qty: {b.quantity}</span>
+                                <span class="meta code" if:true={b.productCode}>Code: {b.productCode}</span>
+                                <span class="price" if:true={b.totalPrice}>{b.totalPrice}</span>
+                                <lightning-icon class="chevron" icon-name="utility:chevrondown" size="x-small"></lightning-icon>
+                            </header>
+                            <div class="bundle-body">
+                                <template if:true={b.children.length}>
+                                    <ul class="children">
+                                        <template for:each={b.children} for:item="c">
+                                            <li key={c.id} class="child">
+                                                <lightning-icon icon-name="utility:chevronright" size="xx-small"></lightning-icon>
+                                                <span class="name" title={c.productName}>{c.productName}</span>
+                                                <span class="meta">Qty: {c.quantity}</span>
+                                                <span class="meta code" if:true={c.productCode}>Code: {c.productCode}</span>
+                                                <span class="price" if:true={c.totalPrice}>{c.totalPrice}</span>
+                                            </li>
+                                        </template>
+                                    </ul>
+                                </template>
+                                <template if:false={b.children.length}>
+                                    <div class="empty-children">No children</div>
+                                </template>
+                            </div>
+                        </section>
+                    </template>
+                </div>
+            </template>
+
+            <!-- Standalone -->
+            <template if:true={standalone.length}>
+                <div class="section">
+                    <div class="section-title">Single Products</div>
+                    <ul class="standalone">
+                        <template for:each={standalone} for:item="s">
+                            <li key={s.id} class="row">
+                                <lightning-icon icon-name="utility:product" size="x-small"></lightning-icon>
+                                <span class="name" title={s.productName}>{s.productName}</span>
+                                <span class="meta">Qty: {s.quantity}</span>
+                                <span class="meta code" if:true={s.productCode}>Code: {s.productCode}</span>
+                                <span class="price" if:true={s.totalPrice}>{s.totalPrice}</span>
+                            </li>
+                        </template>
+                    </ul>
+                </div>
+            </template>
+        </template>
+
+        <template if:false={hasData}>
+            <div class="empty">
+                <lightning-icon icon-name="utility:table" size="small"></lightning-icon>
+                <span>No quote lines found for the synced quote.</span>
+            </div>
+        </template>
+    </div>
+</template>
