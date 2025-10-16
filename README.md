@@ -2,12 +2,12 @@
 
 Repository: https://github.com/tanveer1941/opportunity-product-bundle-view-lwc
 
-This Lightning Web Component displays OpportunityLineItems from synced Revenue Cloud Quotes in a structured format, showing bundle products with their nested children and standalone products at the end.
+This Lightning Web Component displays OpportunityLineItems from synced Revenue Cloud Quotes in a structured format, showing bundle products with their nested children and single products at the end.
 
 ## Features
 
 - Displays bundle products with nested child items in a hierarchical structure
-- Shows standalone products separately at the end of the list
+- Shows single products separately at the end of the list
 - Collapsible bundles by default
 - Clean white background design
 - Proper heading "Product Overview"
