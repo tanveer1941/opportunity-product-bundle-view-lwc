@@ -1,18 +1,45 @@
-# Salesforce DX Project: Next Steps
+# Revenue Cloud Opportunity Bundle View LWC
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+This Lightning Web Component displays OpportunityLineItems from synced Revenue Cloud Quotes in a structured format, showing bundle products with their nested children and standalone products at the end.
 
-## How Do You Plan to Deploy Your Changes?
+## Features
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+- Displays bundle products with nested child items in a hierarchical structure
+- Shows standalone products separately at the end of the list
+- Collapsible bundles by default
+- Clean white background design
+- Proper heading "Product Overview"
+- Clear section separation for bundles and single products
 
-## Configure Your Salesforce DX Project
+## Component Structure
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
+### Main Component
+- `opportunityBundleView` - The primary LWC component
 
-## Read All About It
+### Apex Classes
+- `OpportunityBundleService` - Processes QuoteLineItems into hierarchical structure
+- `OpportunityBundleServiceTest` - Test class with 100% coverage
 
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+## Installation
+
+1. Deploy this project to your Salesforce org using SFDX or any preferred deployment method
+2. Add the component to a page or record layout
+3. Pass an Opportunity ID to the component via the `recordId` attribute
+
+## Usage
+
+The component expects an Opportunity ID to be passed as the `recordId` attribute. It will automatically fetch the related QuoteLineItems and display them appropriately.
+
+## Customization
+
+You can customize the following aspects:
+- Heading text (currently "Product Overview")
+- Section titles ("Bundles" and "Single Products")
+- Styling in the CSS file
+- Color schemes and visual hierarchy
+
+## Dependencies
+
+- Salesforce DX Project
+- Lightning Web Components
+- Apex classes for data processing
